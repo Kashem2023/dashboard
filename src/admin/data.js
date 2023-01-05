@@ -1,2 +1,1 @@
-// export const endPoint = 'https://ecommerce-backend-red.vercel.app'
-export const endPoint = 'http://localhost:5000'
+export const endPoint = 'https://backend-e-commerce-8wxo.onrender.com'
