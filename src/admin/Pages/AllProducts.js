@@ -11,6 +11,7 @@ import {
 } from '@tremor/react';
 import { useEffect, useState } from 'react';
 import Spinner from '../Components/Spinner';
+import { AiFillDelete } from 'react-icons/ai';
 
 
 
@@ -18,6 +19,7 @@ export default function AllProducts() {
 
     const [product, setProduct] = useState(null)
     const [loading, setLoading] = useState(null)
+    const [delId, setDelId] = useState(null)
 
 
     const getAllProduct = async () => {
@@ -39,6 +41,27 @@ export default function AllProducts() {
     useEffect(() => {
         getAllProduct()
     }, [])
+
+
+    const handleProductDelete = async (id) => {
+
+        setLoading(true)
+
+        const res = await fetch(`${endPoint}/api/products/delete`, {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({id: id})
+        })
+
+        const reponse = await res.json()
+
+        setLoading(false)
+
+        if(reponse.success === true){
+            getAllProduct()
+        }
+    }
+
 
 
     return (
@@ -69,6 +92,9 @@ export default function AllProducts() {
                                     <TableCell textAlignment="text-right">{item.Stock}</TableCell>
                                     <TableCell textAlignment="text-right">
                                         <BadgeDelta deltaType={item.deltaType} text={item.delta} size="xs" />
+                                    </TableCell>
+                                    <TableCell>
+                                        <AiFillDelete size={20} color="#F0B12B" className="cursor-pointer ml-20" onClick={() => {handleProductDelete(item._id)}} />
                                     </TableCell>
                                 </TableRow>
                             ))}
