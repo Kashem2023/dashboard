@@ -10,6 +10,8 @@ import Orders from './Pages/Orders.js'
 import Payment from './Pages/Payment.js'
 import SingleOrder from './Pages/SingleOrder.js'
 import Spinner from './Components/Spinner.js'
+import AddLogo from './Pages/AddLogo.js'
+import AddCatergories from './Pages/AddCatergories.js'
 
 
 const Router = () => {
@@ -38,6 +40,8 @@ const Router = () => {
                                 <Route path='/order/:id' element={<SingleOrder />} />
                                 <Route path='/users' element={<AllUsers />} />
                                 <Route path='/product' element={<AllProducts />} />
+                                <Route path='/catergories' element={<AddCatergories />} />
+                                <Route path='/add-logo' element={<AddLogo />} />
                                 <Route path='/create-product' element={<CreateProduct />} />
                                 <Route path='/Payment' element={<Payment />} />
                             </Routes>

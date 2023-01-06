@@ -31,6 +31,18 @@ const sideBar = [
         icons: <AiFillDatabase />
     },
     {
+        id: 4,
+        title: 'Add Catergories',
+        link: '/catergories',
+        icons: <AiFillDatabase />
+    },
+    {
+        id: 5,
+        title: 'Add Logo',
+        link: '/add-logo',
+        icons: <AiFillEdit />
+    },
+    {
         id: 5,
         title: 'Create Product',
         link: '/create-product',
@@ -69,7 +81,7 @@ const Sidebar = () => {
 
     return (
 
-        <div className="flex flex-col h-screen p-3 bg-[#25AB44] sticky top-0 shadow w-60">
+        <div className="hidden md:flex flex-col h-screen p-3 bg-[#25AB44] sticky top-0 shadow w-60">
             <div className="space-y-3">
                 <div className="flex items-center">
                     <h2 className="text-xl font-bold">Dashboard</h2>
