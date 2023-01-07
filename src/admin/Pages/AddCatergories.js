@@ -77,7 +77,7 @@ const AddCatergories = () => {
             {
                 loading ? <Spinner /> : <>
 
-                    <div className='my-8 flex'>
+                    <div className='my-8 flex flex-wrap'>
 
                         {
                             categories?.map((data) => (

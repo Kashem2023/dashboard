@@ -1,5 +1,5 @@
 import { endPoint } from '../data'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FileBase from 'react-file-base64';
 import Spinner from '../Components/Spinner';
 
@@ -10,6 +10,7 @@ const CreateProduct = () => {
         name: '',
         price: '',
         oldPrice: '',
+        selectedC: '',
         Stock: '',
         Option: '',
         description: '',
@@ -18,6 +19,29 @@ const CreateProduct = () => {
     })
 
     const [loading, setLoading] = useState(null)
+    const [categories, setCategories] = useState()
+
+    const getCategories = async () => {
+
+        setLoading(true)
+
+        const res = await fetch(`${endPoint}/api/getCategories`, {
+            method: 'get',
+            headers: { 'Content-Type': 'application/json' }
+        })
+
+        const resData = await res.json()
+
+        setCategories(resData?.categories);
+
+        setLoading(false)
+
+    }
+
+    useEffect(() => {
+        getCategories()
+    }, [])
+
 
     const inputHandle = (e) => {
         setProduct({
@@ -39,11 +63,13 @@ const CreateProduct = () => {
             body: JSON.stringify(product)
         })
 
+
         const resData = await res.json()
         setProduct({
             name: '',
             price: '',
             oldPrice: '',
+            selectedC: '',
             Stock: '',
             Option: '',
             description: '',
@@ -53,7 +79,6 @@ const CreateProduct = () => {
         setLoading(false)
         console.log(resData);
     }
-
 
 
     return (
@@ -83,6 +108,18 @@ const CreateProduct = () => {
                                     <label>Old Price</label>
                                     <br />
                                     <input type="text" placeholder='Old Price' onChange={inputHandle} name="oldPrice" value={product.oldPrice} className='outline-none border-[1px] border-gray-300 w-[575px] h-[38px] pl-5 text-[14px] mt-2' />
+                                </div>
+                                <div className="">
+                                    <label>Add Categories</label>
+                                    <br />
+                                    <select name="selectedC" onChange={inputHandle} value={product.selectedC} className="outline-none bg-transparent border px-4 py-2 rounded-lg mt-2 cursor-pointer">
+                                        <option value="0" defaultValue>All Categories</option>
+                                        {
+                                            categories?.map((i) => (
+                                                <option className="level-0" value={i?.Cdata}>{i?.Cdata}</option>
+                                            ))
+                                        }
+                                    </select>
                                 </div>
                                 <div className="">
                                     <label>Stock</label>
