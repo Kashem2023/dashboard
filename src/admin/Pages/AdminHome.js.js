@@ -81,7 +81,7 @@ export default function AdminHome() {
             {
                 loading ? <Spinner /> :
 
-                    <div>
+                    <div className='mx-6 md:mx-0'>
                         <ColGrid numColsSm={2} numColsLg={3} gapX="gap-x-6" gapY="gap-y-6">
                             <Card>
                                 <Text>Sales</Text>

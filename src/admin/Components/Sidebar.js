@@ -81,7 +81,7 @@ const Sidebar = () => {
 
     return (
 
-        <div className="hidden md:flex flex-col h-screen p-3 bg-[#25AB44] sticky top-0 shadow w-60">
+        <div className="flex flex-col h-screen p-3 bg-[#25AB44] sticky top-0 shadow w-60">
             <div className="space-y-3">
                 <div className="flex items-center">
                     <h2 className="text-xl font-bold">Dashboard</h2>

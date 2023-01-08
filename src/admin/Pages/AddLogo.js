@@ -55,7 +55,7 @@ const AddLogo = () => {
     }
 
     return (
-        <div className='w-[1000px] flex justify-center flex-col items-center'>
+        <div className='w-[1000px] flex justify-center flex-col items-center mt-16 md:mt-0'>
             {
                 loading ? <Spinner /> :
                     <div>
